@@ -1,0 +1,174 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+   int data;
+   struct Node* left;
+   struct Node* right;
+   int height;
+};
+
+
+
+
+
+
+// Utility: return max of two integers
+int max(int a, int b) {
+   return (a > b) ? a : b;
+}
+
+// Get height of a node
+int height(struct Node* node) {
+   if (node == NULL)
+      return 0;
+   return node->height;
+}
+
+// Get balance factor of a node
+int getBalance(struct Node* node) {
+   if (node == NULL)
+      return 0;
+   return height(node->left) - height(node->right);
+}
+
+// Create a new node
+struct Node* createNode(int val) {
+   struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+   newNode->data = val;
+   newNode->left = NULL;
+   newNode->right = NULL;
+   newNode->height = 1;
+   return newNode;
+}
+
+// Right Rotation
+struct Node* rightRotate(struct Node* y) {
+   struct Node* x = y->left;
+   struct Node* T2 = x->right;
+
+    // Perform rotation
+    x->right = y;
+    y->left = T2;
+
+    // Update heights
+    y->height = max(height(y->left), height(y->right)) + 1;
+    x->height = max(height(x->left), height(x->right)) + 1;
+
+    printf("Right Rotation performed at node %d\n", y->data);
+    return x;
+}
+
+// Left Rotation
+
+
+
+
+struct Node* leftRotate(struct Node* x) {
+   struct Node* y = x->right;
+   struct Node* T2 = y->left;
+
+    // Perform rotation
+    y->left = x;
+    x->right = T2;
+
+    // Update heights
+    x->height = max(height(x->left), height(x->right)) + 1;
+    y->height = max(height(y->left), height(y->right)) + 1;
+
+    printf("Left Rotation performed at node %d\n", x->data);
+    return y;
+}
+
+// Insert a node and balance the AVL tree
+struct Node* insert(struct Node* node, int val) {
+    // Step 1: Normal BST insertion
+    if (node == NULL)
+       return createNode(val);
+    if (val < node->data)
+       node->left = insert(node->left, val);
+    else if (val > node->data)
+       node->right = insert(node->right, val);
+    else {
+       printf("Duplicate value %d not inserted.\n", val);
+       return node;
+    }
+
+    // Step 2: Update height of current node
+    node->height = max(height(node->left), height(node->right)) + 1;
+
+    // Step 3: Get balance factor
+    int balance = getBalance(node);
+
+    // Case 1: Left Left (Right Rotation)
+    if (balance > 1 && val < node->left->data)
+       return rightRotate(node);
+
+    // Case 2: Right Right (Left Rotation)
+    if (balance < -1 && val > node->right->data)
+       return leftRotate(node);
+
+    // Case 3: Left Right (Left Rotation + Right Rotation)
+    if (balance > 1 && val > node->left->data) {
+       printf("Left-Right Rotation performed at node %d\n", node->data);
+
+
+
+
+        node->left = leftRotate(node->left);
+        return rightRotate(node);
+    }
+
+    // Case 4: Right Left (Right Rotation + Left Rotation)
+    if (balance < -1 && val < node->right->data) {
+       printf("Right-Left Rotation performed at node %d\n", node->data);
+       node->right = rightRotate(node->right);
+       return leftRotate(node);
+    }
+
+    return node;
+}
+
+// Inorder Traversal
+void inorder(struct Node* root) {
+    if (root == NULL)
+       return;
+    inorder(root->left);
+    printf("%d ", root->data);
+    inorder(root->right);
+}
+
+// Print height and balance factor of each node
+void printInfo(struct Node* root) {
+   if (root == NULL)
+      return;
+   printInfo(root->left);
+   printf("Node: %2d | Height: %d | Balance Factor: %2d\n",
+        root->data, root->height, getBalance(root));
+   printInfo(root->right);
+}
+
+int main() {
+   struct Node* root = NULL;
+
+    printf("--- Inserting nodes into AVL Tree ---\n");
+    root = insert(root, 10);
+    root = insert(root, 20);
+    root = insert(root, 30);
+    root = insert(root, 40);
+    root = insert(root, 50);
+    root = insert(root, 25);
+
+    printf("\nInorder Traversal of AVL Tree: ");
+    inorder(root);
+    printf("\n");
+
+
+
+
+
+    printf("\n--- Node Info (Inorder) ---\n");
+    printInfo(root);
+
+    return 0;
+}

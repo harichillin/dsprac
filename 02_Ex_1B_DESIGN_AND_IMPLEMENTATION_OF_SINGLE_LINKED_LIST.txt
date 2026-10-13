@@ -1,0 +1,138 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+
+void create();
+void insert();
+void deletion();
+void search();
+void display();
+
+int b[20], n, p, pos, e, f, i, flag;
+
+void main()
+{
+  int ch;
+  char g = 'y';
+  printf("\n\t LIST ADT USING ARRAY");
+  printf("\n\n***** MENU *****\n");
+  printf("1. Create\n2. Delete\n3. Search\n4. Insert\n5. Display\n6. Exit\n");
+  printf("\n******************\n");
+  do
+
+
+
+
+  {
+     printf("\nEnter your Choice: ");
+     scanf("%d", &ch);
+     switch(ch)
+     {
+       case 1: create(); break;
+       case 2: deletion(); break;
+       case 3: search(); break;
+       case 4: insert(); break;
+       case 5: display(); break;
+       case 6: exit(1); break;
+       default: printf("\nEnter the correct choice:");
+     }
+     printf("\nDo you want to continue (Y/N): ");
+     scanf(" %c", &g);
+  } while(g == 'y' || g == 'Y');
+}                /* ← this closing brace was missing */
+
+void create()
+{
+  printf("\nEnter the number of nodes: ");
+  scanf("%d", &n);
+  for(i = 0; i < n; i++)
+  {
+    printf("Enter Element %d: ", i + 1);
+    scanf("%d", &b[i]);
+  }
+}
+
+void deletion()
+{
+  printf("\nEnter the position to delete: ");
+  scanf("%d", &pos);
+  if(pos >= n)
+  {
+     printf("\nInvalid Location!!!");
+  }
+  else
+  {
+     for(i = pos + 1; i < n; i++)
+       b[i - 1] = b[i];
+
+
+
+
+
+      n--;
+    }
+    printf("\nElements after deletion: ");
+    for(i = 0; i < n; i++)
+      printf("\t%d", b[i]);
+}
+
+void search()
+{
+  flag = 0;
+  printf("\nEnter the Element to be searched: ");
+  scanf("%d", &e);
+  for(i = 0; i < n; i++)
+  {
+     if(b[i] == e)
+     {
+        flag = 1;
+        break;
+     }
+  }
+  if(flag == 1)
+     printf("Value is at position %d", i);
+  else
+     printf("Value %d is not in the list", e);
+}
+
+void insert()
+{
+  printf("\nEnter the position to insert: ");
+  scanf("%d", &pos);
+  if(pos >= n)
+  {
+     printf("\nInvalid Location!");
+  }
+  else
+  {
+     for(i = MAX - 1; i >= pos - 1; i--)
+       b[i + 1] = b[i];
+     printf("\nEnter the element to insert: ");
+     scanf("%d", &p);
+     b[pos] = p;
+
+
+
+
+
+      n++;
+    }
+    printf("\nThe list after insertion:\n");
+    display();
+}
+
+void display()
+{
+   printf("\nElements of the List ADT:\n");
+   for(i = 0; i < n; i++)
+     printf("%d\n", b[i]);
+}OUTPUT
+[root@localhost user]# cc list_array.c
+[root@localhost user]# ./a.out
+
+
+
+
+RESULT
+
+         Thus the program for List ADT using array has been implemented successfully.
