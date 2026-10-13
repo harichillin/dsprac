@@ -1,0 +1,305 @@
+OPERATING SYSTEMS VIVA QUESTIONS — ANSWERS (1–100)
+====================================================
+
+1. What is an operating system? What are its basic functions?
+An operating system (OS) is system software that manages computer hardware and provides services to applications and users. Its basic functions include process management, memory management, file-system management, device and I/O management, security, resource allocation, and providing a user interface.
+
+2. What is the kill command?
+`kill` is a Unix/Linux command used to send a signal to a process, usually to request termination. Example: `kill 1234` sends SIGTERM to process ID 1234; `kill -9 1234` sends SIGKILL and forces termination.
+
+3. What is IPC? What are the different IPC mechanisms?
+Inter-process communication (IPC) allows processes to exchange data and coordinate with one another. Mechanisms include pipes, named pipes (FIFOs), message queues, shared memory, semaphores, signals, sockets, and remote procedure calls (RPC).
+
+4. What is the main purpose of an OS? What are the different types of OS?
+The main purpose of an OS is to manage resources efficiently and provide a convenient, secure environment for running programs. Types include batch, multiprogramming, multitasking/time-sharing, multiprocessing, distributed, network, real-time, embedded, and mobile operating systems.
+
+5. What are the benefits of a multiprocessor system?
+A multiprocessor system has two or more processors. Benefits include increased throughput, parallel execution, improved reliability, better resource sharing, and potentially lower cost per unit of computing power. Performance depends on how much work can run in parallel.
+
+6. What is `exec()` and `fork()`?
+In Unix-like systems, `fork()` creates a new child process by duplicating the calling process. `exec()` replaces the current process's program with a new program; the process ID normally remains the same. A common pattern is `fork()` followed by `exec()` in the child.
+
+7. What is RAID structure in OS? What are the different levels of RAID?
+RAID (Redundant Array of Independent Disks) combines multiple disks to improve performance, reliability, or both. Common levels: RAID 0 uses striping for speed but has no redundancy; RAID 1 mirrors data; RAID 5 uses striping with distributed parity and tolerates one disk failure; RAID 6 tolerates two disk failures; RAID 10 combines mirroring and striping. RAID is not a substitute for backups.
+
+8. What is GUI?
+A graphical user interface (GUI) lets users interact with a computer through visual elements such as windows, icons, menus, buttons, and a pointer, rather than only text commands.
+
+9. What is a process?
+A process is a program in execution, together with its execution state and allocated resources. It includes such information as its program counter, CPU registers, memory, open files, and process-control information.
+
+10. What is CPU utilization?
+CPU utilization is the percentage of time the CPU is busy executing tasks rather than idle. Higher utilization can indicate effective use of the processor, although very high utilization may also cause delays if demand exceeds capacity.
+
+11. What is a bootstrap program in OS?
+A bootstrap program is firmware or a small program that runs when a computer starts. It initializes hardware and loads the operating-system kernel into memory, allowing the OS to begin execution.
+
+12. Explain demand paging.
+Demand paging loads a page into RAM only when a process actually references it. If the page is not in memory, a page fault occurs; the OS locates the page on storage, loads it into a frame, updates the page table, and resumes the process.
+
+13. What do you mean by RTOS?
+A real-time operating system (RTOS) is designed to respond to events within specified timing constraints. A hard RTOS must meet critical deadlines; a soft RTOS aims to meet deadlines but occasional misses may be tolerable.
+
+14. What do you mean by process synchronization?
+Process synchronization coordinates concurrent processes or threads that share data or resources. It prevents race conditions and ensures operations happen in a safe, intended order using mechanisms such as mutexes, semaphores, and condition variables.
+
+15. What is the difference between main memory and secondary memory?
+Main memory (RAM) is fast, directly accessible by the CPU, usually volatile, and used for currently running programs and data. Secondary memory, such as an SSD or HDD, is slower, non-volatile, and used for long-term storage.
+
+16. What do you mean by overlays in OS?
+Overlays are a memory-management technique in which only the needed parts of a program are loaded into memory at a time. Different program modules can occupy the same memory region at different times, allowing programs larger than available memory to run. Virtual memory largely replaced the need for manual overlays.
+
+17. What is thrashing in OS?
+Thrashing occurs when the system spends most of its time handling page faults and swapping pages instead of executing useful instructions. It commonly happens when processes do not have enough frames for their active working sets.
+
+18. What is the main objective of multiprogramming?
+Multiprogramming keeps several jobs in memory so that when one job waits for I/O, the CPU can execute another. Its main objective is to increase CPU utilization and system throughput.
+
+19. What is the difference between multitasking and multiprocessing OS?
+Multitasking lets multiple tasks make progress by sharing CPU time; on one CPU, tasks may run by rapid switching. Multiprocessing uses two or more processors/CPU cores to execute tasks in parallel. An OS may support both.
+
+20. What do you mean by sockets in OS?
+A socket is an endpoint for communication between processes, commonly over a network or on the same machine. A socket is identified by details such as its address and port and can support protocols such as TCP or UDP.
+
+21. Explain zombie process.
+A zombie is a process that has finished execution but still has an entry in the process table because its parent has not yet collected its exit status using a wait operation. It does not execute or use normal process memory; the entry is removed when reaped.
+
+22. What do you mean by cascading termination?
+Cascading termination occurs when terminating a parent process also causes its child processes to be terminated. Whether this happens depends on the operating system and the process-management policy.
+
+23. What is starvation and aging in OS?
+Starvation occurs when a process waits indefinitely because other processes keep receiving the needed CPU time or resources. Aging gradually increases the priority of a waiting process so that it eventually gets served, helping prevent starvation.
+
+24. What is the difference between paging and segmentation?
+Paging divides virtual memory into fixed-size pages and physical memory into equal-size frames; it is mostly transparent to the programmer. Segmentation divides a program into variable-size logical units such as code, data, and stack. Paging can cause internal fragmentation, while segmentation can cause external fragmentation.
+
+25. What is virtual memory?
+Virtual memory gives each process the illusion of a large, private address space. The OS and hardware map virtual addresses to physical memory and can keep some pages on secondary storage, allowing programs to run without all their pages being in RAM at once.
+
+26. What is a thread in OS?
+A thread is the smallest unit of CPU execution scheduled within a process. Threads in the same process share code, data, and many resources, but each thread has its own stack, registers, and program counter.
+
+27. What is the difference between a user-level thread and a kernel-level thread?
+User-level threads are managed by a user-space library, often with low management overhead, but a blocking system call can block the whole process in some models. Kernel-level threads are managed and scheduled by the OS, support true parallel execution across cores, and generally have higher management overhead.
+
+28. What is a process? What are the different states of a process?
+A process is a program in execution. Common states are New (being created), Ready (waiting for CPU), Running (currently executing), Waiting/Blocked (waiting for an event or I/O), and Terminated (finished). Some systems also use suspended states.
+
+29. What do you mean by FCFS?
+First-Come, First-Served (FCFS) is a non-preemptive CPU scheduling algorithm that runs processes in the order they arrive in the ready queue. It is simple, but a long job can make shorter jobs wait (the convoy effect).
+
+30. What is a scheduling algorithm? Name different types of scheduling algorithms.
+A scheduling algorithm decides which ready process receives the CPU next. Common algorithms include FCFS, Shortest Job First (SJF), Shortest Remaining Time First (SRTF), priority scheduling, Round Robin (RR), and multilevel queue or multilevel feedback queue scheduling.
+
+31. What are the different types of kernel?
+Common kernel designs include monolithic kernels, microkernels, hybrid kernels, modular kernels, and exokernels. They differ in which services run in kernel space and how components communicate.
+
+32. What do you mean by semaphore in OS? Why is it used?
+A semaphore is a synchronization variable controlled through atomic operations such as wait (P) and signal (V). A counting semaphore manages access to a set of resource instances; a binary semaphore can coordinate exclusive access or event signaling. Semaphores help prevent race conditions and coordinate processes or threads.
+
+33. What is a kernel and its main functions?
+The kernel is the core of an operating system, running with privileged access to hardware. It handles process and thread scheduling, memory management, system calls, device drivers, interrupt handling, IPC, and protection.
+
+34. Write the difference between microkernel and monolithic kernel.
+A monolithic kernel runs most OS services, such as drivers and file systems, in kernel space, often providing fast communication but a larger privileged code base. A microkernel keeps only essential functions in kernel space and moves many services to user space, improving isolation and modularity but potentially adding communication overhead.
+
+35. What is SMP (Symmetric Multiprocessing)?
+SMP is a system design in which two or more equivalent processors share main memory and are managed by one OS. Any processor can generally run OS or application tasks, allowing parallel processing and load sharing.
+
+36. What is a time-sharing system?
+A time-sharing system lets multiple users or processes interact with a computer by assigning each a small CPU time slice. Rapid switching gives the impression that each task has its own processor and supports interactive use.
+
+37. What is context switching?
+Context switching is saving the state of the currently running process or thread and restoring the state of another so the CPU can switch execution. It enables multitasking but adds overhead because the switch itself does not perform application work.
+
+38. What is the difference between kernel and OS?
+The kernel is the central component that manages hardware and privileged operations. The operating system is the broader system software, including the kernel plus system libraries, utilities, services, and often the user interface.
+
+39. What is the difference between process and thread?
+A process has its own address space and resources, while threads within a process share that address space and many resources. Processes usually have stronger isolation and higher switching/communication costs; threads are lighter but require synchronization when sharing data.
+
+40. What is throughput?
+Throughput is the number of processes or jobs completed per unit of time. Higher throughput generally means the system completes more work in a given period.
+
+41. What is turnaround time?
+Turnaround time is the total time from a process's arrival/submission until its completion. Formula: Turnaround time = Completion time − Arrival time.
+
+42. What is a deadlock in OS?
+A deadlock is a situation in which a group of processes are permanently blocked because each is waiting for a resource or event that another process in the group must provide.
+
+43. What is spooling in OS?
+Spooling (Simultaneous Peripheral Operations On-Line) places jobs or data in a disk-based queue for a slower device, such as a printer. The device processes queued jobs when ready, allowing applications to continue without waiting for each job to finish.
+
+44. What is meant by process scheduling?
+Process scheduling is the OS activity of selecting a process from the ready queue and allocating CPU time to it according to a scheduling policy.
+
+45. What are the different types of process schedulers?
+The long-term (job) scheduler selects jobs to admit into memory; the short-term (CPU) scheduler selects the next ready process to run; and the medium-term scheduler suspends and later resumes processes, often to manage memory load.
+
+46. What is waiting time?
+Waiting time is the total time a process spends in the ready queue waiting for CPU execution. For standard scheduling calculations: Waiting time = Turnaround time − CPU burst time, assuming one CPU burst and no other accounted waiting periods.
+
+47. What is response time?
+Response time is the time from a request or process arrival until the system first responds or the process first receives CPU service. In interactive systems, it usually measures time until the first visible response, not total completion time.
+
+48. What is meant by Long-term Scheduler (Job Scheduler)?
+The long-term scheduler decides which new jobs are admitted from the job pool into memory/ready processing. It controls the degree of multiprogramming and tries to maintain a suitable mix of CPU-bound and I/O-bound jobs.
+
+49. What is meant by Short-term Scheduler (CPU Scheduler)?
+The short-term scheduler chooses one process from the ready queue to run next on the CPU. It is invoked frequently and therefore must be fast.
+
+50. What is context switching?
+Context switching saves the CPU state of one running process/thread and restores another's state. The saved context may include registers, the program counter, stack pointer, and scheduling information.
+
+51. What is preemptive and non-preemptive scheduling?
+In preemptive scheduling, the OS can interrupt a running process and give the CPU to another, for example when a time slice expires. In non-preemptive scheduling, a process keeps the CPU until it finishes its CPU burst or blocks/yields.
+
+52. What are the different types of processes?
+Processes may be classified as user or system processes, CPU-bound or I/O-bound processes, independent or cooperating processes, and foreground or background processes. Some textbooks also distinguish long-, medium-, and short-term scheduling states rather than process types.
+
+53. What is meant by process synchronization?
+Process synchronization coordinates concurrent execution when processes or threads share data or resources. It ensures correct ordering and mutual exclusion where necessary, preventing race conditions and inconsistent results.
+
+54. What is a race condition?
+A race condition occurs when the result depends on the unpredictable timing or interleaving of concurrent operations on shared data. It can be prevented by properly synchronizing critical operations.
+
+55. What is meant by a critical section?
+A critical section is the part of a program where shared data or resources are accessed or modified. It must be protected so that concurrent execution does not cause incorrect results.
+
+56. What are the conditions required to solve a critical-section problem?
+A correct solution should satisfy: (1) Mutual exclusion—only one process at a time is in the critical section; (2) Progress—if the section is free, choosing the next entrant cannot be postponed indefinitely; and (3) Bounded waiting—a process will not wait indefinitely after requesting entry.
+
+57. What is meant by semaphore?
+A semaphore is a synchronization mechanism whose value is changed using atomic wait and signal operations. It can count available resources or coordinate access to shared resources and events.
+
+58. What is meant by mutual exclusion (mutex)?
+Mutual exclusion ensures that only one process or thread at a time accesses a particular critical section or resource. A mutex is a locking mechanism used to enforce this rule.
+
+59. What is the difference between mutex and semaphore?
+A mutex is normally an ownership-based lock: the thread that locks it should unlock it. A semaphore is a counter controlled by wait/signal operations and can represent multiple available resources or event notifications. A binary semaphore can resemble a mutex, but their ownership semantics differ.
+
+60. What are the necessary conditions for a deadlock?
+The four Coffman conditions are: mutual exclusion (a resource is non-shareable), hold and wait (a process holds resources while waiting for more), no preemption (resources cannot be forcibly taken away), and circular wait (a circular chain of processes waits for resources held by the next process).
+
+61. How can a deadlock be handled?
+Deadlocks can be handled through prevention (break at least one necessary condition), avoidance (grant requests only if the state remains safe, e.g. Banker’s algorithm), detection and recovery, or ignoring the problem when it is rare and recovery cost is acceptable.
+
+62. What is deadlock detection and recovery?
+Deadlock detection checks the system's resource-allocation state to determine whether a deadlock exists. Recovery may terminate one or more processes, preempt resources where safe, or roll back processes to a prior state.
+
+63. Write down the advantages of multithreading.
+Multithreading improves responsiveness, allows threads to share process resources easily, can improve throughput and CPU utilization, and enables parallelism on multicore processors. Creating and switching threads is often less expensive than doing so for separate processes.
+
+64. Difference between multithreading and multitasking?
+Multitasking runs multiple processes or tasks concurrently by sharing CPU time or using multiple cores. Multithreading runs multiple threads within a process. Threads share the process's memory and resources, while separate processes generally have separate address spaces.
+
+65. What are the drawbacks of semaphores?
+Semaphores can be difficult to use correctly; incorrect ordering or missing operations may cause deadlock, starvation, or race conditions. They can also make programs harder to debug and maintain. Higher-level constructs such as mutexes, condition variables, and monitors can be easier to reason about.
+
+66. What is Peterson's approach?
+Peterson's algorithm is a software solution to the critical-section problem for two processes. It uses two intent flags and a `turn` variable to provide mutual exclusion, progress, and bounded waiting under its assumed memory model. Modern systems may require memory-ordering support, so it is mainly taught as a theoretical algorithm.
+
+67. Define the term bounded waiting.
+Bounded waiting means there is a finite limit on how many times other processes may enter their critical sections after a process requests entry, before that requesting process is allowed to enter. It prevents indefinite postponement.
+
+68. What are the solutions to the critical-section problem?
+Solutions include software algorithms such as Peterson's algorithm, hardware atomic instructions such as test-and-set or compare-and-swap, mutex locks, semaphores, monitors, and message-passing designs. A correct solution should satisfy mutual exclusion, progress, and bounded waiting where required.
+
+69. What is a Banker's algorithm?
+Banker's algorithm is a deadlock-avoidance algorithm. Before granting a resource request, it checks whether the resulting state is safe—meaning there is an order in which every process can obtain its remaining resources and finish.
+
+70. What is the resource allocation graph?
+A resource-allocation graph is a directed graph showing processes and resource types. A process-to-resource edge represents a request; a resource-to-process edge represents an allocation. A cycle indicates deadlock if each resource type has only one instance; with multiple instances, a cycle alone is not conclusive.
+
+71. What is the goal and functionality of memory management?
+Memory management tracks memory use, allocates and frees memory, translates addresses, protects process address spaces, supports sharing, and manages virtual memory. Its goals include efficient memory utilization, isolation, and safe execution of multiple programs.
+
+72. Write a difference between physical address and logical address.
+A logical (virtual) address is generated by the CPU for a process. A physical address is the actual location in RAM. The memory-management unit (MMU) translates logical/virtual addresses into physical addresses.
+
+73. Explain address binding.
+Address binding is the mapping of a program's instructions and data addresses to memory addresses. It can happen at compile time, load time, or execution time, depending on when the final address mapping is determined.
+
+74. Write different types of address binding.
+The three types are compile-time binding (physical location known during compilation), load-time binding (location chosen when loaded), and execution-time/run-time binding (addresses translated while the program runs, allowing relocation).
+
+75. Write an advantage of dynamic allocation algorithms.
+Dynamic memory allocation allows memory to be assigned to processes as needed rather than requiring all memory to be fixed in advance. Algorithms such as first fit, best fit, and worst fit can use available free holes flexibly, though they differ in speed and fragmentation behavior.
+
+76. What is meant by page fault?
+A page fault occurs when a process accesses a virtual-memory page that is not currently mapped in physical memory or violates an access rule. For a valid page that is absent, the OS loads it into RAM and resumes execution; an invalid access may cause an error or termination.
+
+77. What is meant by paging?
+Paging is a memory-management scheme that divides virtual memory into fixed-size pages and physical memory into same-size frames. Page tables map pages to frames, avoiding the need for a process's physical memory to be contiguous.
+
+78. What is page fault rate?
+Page fault rate is the number of page faults per unit time or per number of memory references. A high rate can indicate insufficient memory frames or poor locality and may lead to thrashing.
+
+79. What is fragmentation? Different types of fragmentation?
+Fragmentation is wasted memory space caused by the way memory is allocated. Internal fragmentation is unused space inside an allocated block; external fragmentation is free memory split into scattered holes that may not form one sufficiently large contiguous block.
+
+80. What is internal fragmentation?
+Internal fragmentation is wasted space inside an allocated memory block because the allocated block is larger than the requested amount. For example, a process needing 6 KB assigned an 8 KB block wastes 2 KB inside that block.
+
+81. What is external fragmentation?
+External fragmentation occurs when total free memory may be sufficient, but it is divided into small, non-contiguous holes, so a request for one large contiguous block cannot be satisfied. Compaction can sometimes reduce it; paging avoids external fragmentation for ordinary physical frame allocation.
+
+82. Write a difference between paging and segmentation.
+Paging uses fixed-size pages and frames and divides memory in a way usually invisible to the programmer. Segmentation uses variable-size logical units, such as code, stack, and data, and reflects a program's logical structure. Paging may cause internal fragmentation; segmentation may cause external fragmentation.
+
+83. What is associative memory?
+Associative memory, also called content-addressable memory (CAM), is searched by content rather than by a conventional address. In OS memory management, a translation lookaside buffer (TLB) is a small, fast associative cache used to speed up virtual-to-physical address translation.
+
+84. What is cache memory?
+Cache memory is small, fast memory that stores copies of frequently or recently used data and instructions close to the CPU. It reduces average access time by exploiting temporal and spatial locality.
+
+85. Write down the advantages of virtual memory.
+Virtual memory allows programs larger than physical RAM to run, supports more processes, provides process isolation and protection, simplifies programming through large address spaces, and enables efficient sharing of selected pages. Performance can suffer if page faults become excessive.
+
+86. Write down the basic concept of the file system.
+A file system organizes and manages files and directories on storage. It tracks names, metadata, locations, permissions, free space, and operations such as creating, opening, reading, writing, renaming, and deleting files.
+
+87. Write the names of different operations on file.
+Common file operations include create, open, read, write, append, seek/reposition, close, rename, truncate, get/set attributes, and delete.
+
+88. Define the term bit-vector.
+A bit vector (bitmap) represents the allocation status of storage blocks or frames using bits. For example, one bit per disk block can indicate whether that block is free or allocated; the exact meaning of 0 and 1 depends on the implementation.
+
+89. What is a file allocation table?
+A File Allocation Table (FAT) is a file-system data structure that records chains of disk clusters belonging to files. Each cluster's table entry identifies the next cluster in the chain or marks an end-of-file/free/bad cluster. FAT is also the name of a family of file systems.
+
+90. What is rotational latency?
+Rotational latency is the time a rotating disk takes to rotate the required sector under the read/write head after the head is positioned on the correct track. On average, it is about half a rotation for a uniformly located sector.
+
+91. What is seek time?
+Seek time is the time taken by a hard disk's actuator to move the read/write head to the required track or cylinder. It is distinct from rotational latency.
+
+92. What are real-time systems?
+A real-time system must produce correct results within specified timing deadlines, not merely correct results eventually. Hard real-time systems cannot miss critical deadlines; soft real-time systems tolerate occasional deadline misses with reduced quality or usefulness.
+
+93. Differentiate between synchronous and asynchronous I/O.
+With synchronous I/O, the calling thread waits until the I/O operation completes (or otherwise reaches its defined completion point). With asynchronous I/O, the request is initiated and the caller can continue doing other work; completion is reported later through a callback, event, signal, or completion queue.
+
+94. What is Direct I/O, and why is it sometimes preferred over buffered I/O?
+Direct I/O transfers data between storage and application buffers while bypassing much of the OS page cache, subject to alignment and platform requirements. It can be useful for database or storage applications that manage their own cache and want to avoid duplicate caching. It is not always faster and may impose stricter requirements.
+
+95. What is the difference between buffered and unbuffered I/O?
+Buffered I/O uses an intermediate buffer, often the OS page cache or a library buffer, which can improve performance by combining operations and caching data. Unbuffered I/O bypasses some or all buffering, potentially giving more direct control but often requiring careful handling and alignment. “Unbuffered” can mean different things in different APIs.
+
+96. Explain Direct Memory Access (DMA).
+DMA allows a device to transfer data directly to or from main memory without the CPU copying every byte. The CPU sets up the transfer; the DMA controller/device performs it and usually interrupts the CPU when finished. DMA reduces CPU overhead for large transfers.
+
+97. What is starvation and aging?
+Starvation is indefinite waiting because a process repeatedly loses access to CPU time or resources. Aging gradually raises the priority of waiting processes so that they eventually receive service and starvation is reduced.
+
+98. What is disk seek time?
+Disk seek time is the time required for a hard disk's read/write head to move to the track containing the requested data. It does not include the time waiting for the sector to rotate into position.
+
+99. What is disk access time?
+Disk access time is the total time required to access data on a disk. For a traditional hard disk, it is commonly approximated as seek time + rotational latency + transfer time, with possible additional controller and queueing overhead.
+
+100. What is rotational latency?
+Rotational latency is the waiting time for the desired sector to rotate beneath the read/write head once the head is positioned on the correct track. At a constant rotational speed, average rotational latency is approximately half the time for one full revolution.
+
+====================================================
+END OF OPERATING SYSTEMS VIVA ANSWERS
