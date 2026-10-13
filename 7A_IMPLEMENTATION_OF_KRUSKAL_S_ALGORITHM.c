@@ -1,0 +1,67 @@
+#include <stdio.h>
+#define MAX 20
+struct Edge
+{
+   int u, v, w;
+};
+struct Edge edge[MAX], temp;
+int parent[MAX];
+int find(int i)
+{
+   while(parent[i] != i)
+      i = parent[i];
+   return i;
+}
+void unionSet(int a, int b)
+{
+   parent[a] = b;
+}
+int main()
+{
+   int V, E, i, j;
+   int mstCost = 0;
+   printf("Enter number of vertices: ");
+   scanf("%d", &V);
+   printf("Enter number of edges: ");
+   scanf("%d", &E);
+   printf("Enter source destination weight:\n");
+   for(i = 0; i < E; i++)
+   {
+      scanf("%d %d %d",
+           &edge[i].u,
+           &edge[i].v,
+           &edge[i].w);
+   }
+   for(i = 0; i < V; i++)
+      parent[i] = i;
+   for(i = 0; i < E - 1; i++)
+   {
+      for(j = 0; j < E - i - 1; j++)
+      {
+         if(edge[j].w > edge[j + 1].w)
+         {
+            temp = edge[j];
+            edge[j] = edge[j + 1];
+            edge[j + 1] = temp;
+
+       }
+    }
+  }
+  printf("\nEdges in Minimum Spanning Tree:\n");
+  for(i = 0; i < E; i++)
+  {
+    int a = find(edge[i].u);
+    int b = find(edge[i].v);
+    if(a != b)
+    {
+       printf("%d -- %d = %d\n",
+            edge[i].u,
+            edge[i].v,
+            edge[i].w);
+       mstCost += edge[i].w;
+       unionSet(a, b);
+    }
+  }
+  printf("\nMinimum Cost = %d\n", mstCost);
+  return 0;
+}

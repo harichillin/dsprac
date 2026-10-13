@@ -1,0 +1,50 @@
+#include <stdio.h>
+#define MAX 20
+int main()
+{
+  int graph[MAX][MAX];
+  int indegree[MAX] = {0};
+  int queue[MAX];
+  int front = 0, rear = -1;
+  int n, i, j, count = 0;
+  printf("Enter the number of vertices: ");
+  scanf("%d", &n);
+  printf("Enter the adjacency matrix:\n");
+  for(i = 0; i < n; i++)
+  {
+     for(j = 0; j < n; j++)
+     {
+        scanf("%d", &graph[i][j]);
+
+        if(graph[i][j] == 1)
+           indegree[j]++;
+    }
+  }
+  for(i = 0; i < n; i++)
+  {
+    if(indegree[i] == 0)
+       queue[++rear] = i;
+  }
+  printf("Topological Order: ");
+
+  while(front <= rear)
+  {
+    int vertex = queue[front++];
+    printf("%d ", vertex);
+    count++;
+
+    for(j = 0; j < n; j++)
+    {
+      if(graph[vertex][j] == 1)
+      {
+          indegree[j]--;
+
+            if(indegree[j] == 0)
+               queue[++rear] = j;
+        }
+    }
+  }
+  if(count != n)
+     printf("\nGraph contains a cycle.\n");
+  return 0;
+}
